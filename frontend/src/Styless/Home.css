@@ -1,0 +1,26 @@
+/* Full page container */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Content between header and footer */
+.content-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Optional: prevent body from scrolling */
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 50px;
+}
+

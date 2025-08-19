@@ -1,0 +1,224 @@
+/* PaymentForm.css */
+.payment-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.payment-form-container {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.payment-header h2 {
+  color: #333;
+  margin: 0;
+  font-size: 24px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.booking-summary {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border: 1px solid #e9ecef;
+}
+
+.booking-summary h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 18px;
+}
+
+.booking-summary p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.booking-summary p:last-child {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c5aa0;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #dee2e6;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-element-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-element-container label {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.StripeElement {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  transition: border-color 0.2s;
+}
+
+.StripeElement:focus {
+  border-color: #2c5aa0;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(44, 90, 160, 0.1);
+}
+
+.StripeElement--invalid {
+  border-color: #dc3545;
+}
+
+.payment-error {
+  color: #dc3545;
+  font-size: 14px;
+  padding: 10px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+.payment-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.payment-buttons button {
+  flex: 1;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #545b62;
+}
+
+.pay-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.pay-btn:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.pay-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .payment-overlay {
+    padding: 10px;
+  }
+  
+  .payment-form-container {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .payment-header h2 {
+    font-size: 20px;
+  }
+  
+  .booking-summary {
+    padding: 15px;
+  }
+  
+  .payment-buttons {
+    flex-direction: column;
+  }
+  
+  .payment-buttons button {
+    width: 100%;
+  }
+}
+
+/* Loading Animation */
+.pay-btn:disabled::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
