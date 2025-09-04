@@ -25,13 +25,21 @@ app.use(cors({
 app.use(express.json());
 
 // Database connection
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '', // Change this to your MySQL password
-  database: 'marriagehall'
-});
+// const db = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '', // Change this to your MySQL password
+//   database: 'marriagehall'
+// });
+const dbConfig = new URL(process.env.MYSQL_URL);
 
+const db = mysql.createConnection({
+  host: dbConfig.hostname,
+  port: dbConfig.port,
+  user: dbConfig.username,
+  password: dbConfig.password,
+  database: dbConfig.pathname.substring(1),
+});
 // Test database connection
 db.connect((err) => {
   if (err) {
@@ -782,7 +790,7 @@ app.get('/test', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server is running at port ${PORT}`);
-  console.log(`Test the server at: http://localhost:${PORT}/test`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running at port ${PORT}`);
+//   console.log(`Test the server at: http://localhost:${PORT}/test`);
+// });
